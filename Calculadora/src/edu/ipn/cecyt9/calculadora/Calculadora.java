@@ -49,7 +49,7 @@ public class Calculadora extends JFrame {
 
 	/** Indica si estamos iniciando o no una operación */
 	boolean nuevaOperacion = true;
-
+//
 	/**
 	 * Constructor. Crea los botones y componentes de la calculadora
 	 */

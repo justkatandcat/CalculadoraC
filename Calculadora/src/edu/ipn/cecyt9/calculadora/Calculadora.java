@@ -17,13 +17,15 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+import java.math.BigDecimal;
+
 /**
  * 
  * Interfaz para nuestra calculadora basica
  * 
  * @author:  emmanuel 
  * @version:  1.0 
- * @date: 06-09-2015 
+ *  
  */
 public class Calculadora extends JFrame {
 
@@ -53,10 +55,10 @@ public class Calculadora extends JFrame {
 	 */
 	public Calculadora() {
 		super();
-		setSize(250, 300);
+		setSize(400, 300);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 
 		// Vamos a dibujar sobre el panel
 		JPanel panel = (JPanel) this.getContentPane();
@@ -90,6 +92,12 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("-");
 		nuevoBotonOperacion("*");
 		nuevoBotonOperacion("/");
+                nuevoBotonOperacion("sen");
+                nuevoBotonOperacion("cos");
+                nuevoBotonOperacion("tan");
+                nuevoBotonOperacion("log10");
+                nuevoBotonOperacion("√");
+                nuevoBotonOperacion("exp");
 		nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
 
@@ -184,6 +192,11 @@ public class Calculadora extends JFrame {
 	 * Calcula el resultado y lo muestra por pantalla
 	 */
 	private void calcularResultado() {
+            
+            Double a= new Double (pantalla.getText());
+            //convierte el valor ingresado a radianes
+            Double a1 =a*Math.PI/180.0;
+            
 		if (operacion.equals("+")) {
 			resultado += new Double(pantalla.getText());
 		} else if (operacion.equals("-")) {
@@ -192,7 +205,19 @@ public class Calculadora extends JFrame {
 			resultado /= new Double(pantalla.getText());
 		} else if (operacion.equals("*")) {
 			resultado *= new Double(pantalla.getText());
-		}
+		} else if (operacion.equals("sen")) {
+			resultado = Math.sin(a1);
+		} else if (operacion.equals("cos")) {
+			resultado = Math.cos(a1);
+		}else if (operacion.equals("tan")) {
+			resultado = Math.tan(a1);
+		}else if (operacion.equals("√")) {
+			resultado = Math.sqrt(a) ;
+		}else if (operacion.equals("log10")) {
+			resultado = Math.log10(new Double(pantalla.getText()));
+		} else if(operacion.equals("exp")){
+                        resultado = Math.pow(0, 0);
+                }
 
 		pantalla.setText("" + resultado);
 		operacion = "";
